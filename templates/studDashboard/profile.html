@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile - Student</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Flowbite CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      /* gray-50 */
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+
+  <!-- Sidebar Toggle (Mobile) -->
+  <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+    type="button"
+    class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+    <span class="sr-only">Open sidebar</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path clip-rule="evenodd" fill-rule="evenodd"
+        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+      </path>
+    </svg>
+  </button>
+
+  <!-- Sidebar -->
+  <aside id="default-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+    aria-label="Sidebar">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-white border-r border-gray-200">
+      <a href="#" class="flex items-center ps-2.5 mb-8 mt-2">
+        <div class="bg-gray-900 text-white p-1.5 rounded-lg mr-3">
+          <i data-lucide="shield-check" class="w-6 h-6"></i>
+        </div>
+        <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900">Proctor</span>
+      </a>
+      <ul class="space-y-2 font-medium">
+        <li>
+          <a href="studentDashboard.html"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="layout-dashboard"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="exam-page.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="file-text"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">My Exams</span>
+          </a>
+        </li>
+        <li>
+          <a href="results.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="award" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Results</span>
+          </a>
+        </li>
+        <li>
+          <a href="violations.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="alert-triangle"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Violations</span>
+          </a>
+        </li>
+
+        <li class="pt-4 mt-4 space-y-2 border-t border-gray-200">
+          <a href="profile.html" class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-100 group">
+            <i data-lucide="user" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Profile</span>
+          </a>
+          <a href="#" id="logoutBtn"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group cursor-pointer">
+            <i data-lucide="log-out" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="p-4 sm:ml-64">
+    <div class="p-4 mt-10 sm:mt-0">
+
+      <!-- Header -->
+      <div class="mb-8">
+        <nav class="flex mb-4" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+              <a href="studentDashboard.html"
+                class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
+                <i data-lucide="home" class="w-4 h-4 me-2"></i>
+                Home
+              </a>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 mx-1"></i>
+                <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2">Profile</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+        <h1 class="text-3xl font-bold text-gray-900">My Profile</h1>
+      </div>
+
+      <!-- Profile Card -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden max-w-4xl">
+        <!-- Cover Image -->
+        <div class="h-32 bg-gradient-to-r from-blue-800 to-blue-900"></div>
+
+        <div class="px-8 pb-8">
+          <div class="relative flex items-end -mt-12 mb-6">
+            <div class="bg-white p-1 rounded-full">
+              <div
+                class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 text-3xl font-bold border border-gray-200">
+                <i data-lucide="user" class="w-12 h-12"></i>
+              </div>
+            </div>
+            <div class="ml-4 mb-1">
+              <h2 class="text-2xl font-bold text-gray-900" id="profileName">Loading...</h2>
+              <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded border border-blue-400"
+                id="profileRole">Student</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="md:col-span-2">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">About Me</h3>
+              <p class="text-gray-600 leading-relaxed" id="profileAbout">
+                No description added yet.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <i data-lucide="contact" class="w-5 h-5 mr-2 text-gray-500"></i> Contact Information
+              </h3>
+              <dl class="space-y-4">
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Email Address</dt>
+                  <dd class="mt-1 text-sm text-gray-900 font-semibold" id="profileEmail">loading...
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Phone Number</dt>
+                  <dd class="mt-1 text-sm text-gray-900" id="profilePhone">+91-XXXX-XXXXXX</dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Location</dt>
+                  <dd class="mt-1 text-sm text-gray-900" id="profileLocation">India</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <i data-lucide="shield-check" class="w-5 h-5 mr-2 text-gray-500"></i> Account Status
+              </h3>
+              <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 border border-green-200" role="alert">
+                <span class="font-medium">Active!</span> Your student account is active.
+              </div>
+              <div class="mt-4">
+                <button id="openChangePwBtn"
+                  class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none flex items-center transition hover:scale-105">
+                  <i data-lucide="key" class="w-4 h-4 mr-2"></i> Change Password
+                </button>
+                <button id="openEditProfileBtn"
+                  class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition hover:scale-105">
+                  Edit Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Edit Profile Modal -->
+  <div id="editProfileModal" tabindex="-1" aria-hidden="true"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="relative w-full max-w-md max-h-full">
+      <div class="relative bg-white rounded-lg shadow">
+        <div class="flex items-start justify-between p-4 border-b rounded-t">
+          <h3 class="text-xl font-semibold text-gray-900">Edit Profile</h3>
+          <button type="button" id="closeEditProfileBtn"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div class="p-6 space-y-6">
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Full Name</label>
+            <input type="text" id="editName"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Email Address <span
+                class="text-xs text-gray-500">(Requires verification to change)</span></label>
+            <input type="email" id="editEmail"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Phone Number</label>
+            <input type="tel" id="editPhone"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Location</label>
+            <input type="text" id="editLocation"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="e.g. Mumbai, India">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">About Me</label>
+            <textarea id="editAbout" rows="4"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Write a brief description..."></textarea>
+          </div>
+        </div>
+        <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b">
+          <button id="saveProfileBtn" type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Save
+            Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Change Password Modal -->
+  <div id="changePasswordModal" tabindex="-1" aria-hidden="true"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="relative w-full max-w-md max-h-full">
+      <div class="relative bg-white rounded-lg shadow">
+        <div class="flex items-start justify-between p-4 border-b rounded-t">
+          <h3 class="text-xl font-semibold text-gray-900">Change Password</h3>
+          <button type="button" id="closeChangePwBtn"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div class="p-6 space-y-6">
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">New Password</label>
+            <input type="password" id="newPassword"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Min. 6 characters">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Confirm Password</label>
+            <input type="password" id="confirmPassword"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Re-enter password">
+          </div>
+        </div>
+        <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b">
+          <button id="savePasswordBtn" type="button"
+            class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Update
+            Password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Firebase Logic -->
+  <script type="module">
+    import { app, auth, db } from '/static/js/firebase-config.js';
+    import { doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { onAuthStateChanged, signOut, updatePassword, verifyBeforeUpdateEmail } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+    // Elements
+    const profileName = document.getElementById('profileName');
+    const profileEmail = document.getElementById('profileEmail');
+    const profileRole = document.getElementById('profileRole');
+    const profilePhone = document.getElementById('profilePhone');
+    const profileLocation = document.getElementById('profileLocation');
+    const profileAbout = document.getElementById('profileAbout');
+
+    // Modals
+    const editModal = document.getElementById('editProfileModal');
+    const pwModal = document.getElementById('changePasswordModal');
+
+    // Buttons
+    const openEditBtn = document.getElementById('openEditProfileBtn');
+    const openPwBtn = document.getElementById('openChangePwBtn');
+    const saveProfileBtn = document.getElementById('saveProfileBtn');
+    const savePasswordBtn = document.getElementById('savePasswordBtn');
+
+    const closeEditBtn = document.getElementById('closeEditProfileBtn');
+    const closePwBtn = document.getElementById('closeChangePwBtn');
+
+
+    // Helpers
+    const toggleModal = (modal, show) => {
+      if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    };
+
+    [closeEditBtn, closePwBtn].forEach(btn => {
+      if (btn) btn.addEventListener('click', () => {
+        toggleModal(editModal, false);
+        toggleModal(pwModal, false);
+      });
+    });
+
+    // Mobile Toggle Helper
+    const sidebarToggle = document.querySelector('[data-drawer-toggle="default-sidebar"]');
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', () => {
+        const sidebar = document.getElementById('default-sidebar');
+        sidebar.classList.toggle('-translate-x-full');
+      });
+    }
+
+
+    // Auth State
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = "../index.html"; // Adjusted for student dashboard structure
+        return;
+      }
+
+      // Set basic info
+      profileName.textContent = user.displayName || "Student";
+      profileEmail.textContent = user.email;
+
+      // Fetch extra data
+      try {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          const data = userDoc.data();
+          if (data.username || data.name) profileName.textContent = data.username || data.name; // Support both fields
+          // if (data.role) profileRole.textContent = data.role.charAt(0).toUpperCase() + data.role.slice(1); // Usually 'student'
+          if (data.phone) profilePhone.textContent = data.phone;
+          if (data.location) profileLocation.textContent = data.location;
+          if (data.about) profileAbout.textContent = data.about;
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+
+      // Connect Buttons
+      if (openEditBtn) {
+        openEditBtn.onclick = () => {
+          document.getElementById('editName').value = profileName.textContent;
+          document.getElementById('editEmail').value = profileEmail.textContent;
+          document.getElementById('editPhone').value = (profilePhone.textContent === "+91-XXXX-XXXXXX") ? "" : profilePhone.textContent;
+          document.getElementById('editLocation').value = (profileLocation.textContent === "India") ? "" : profileLocation.textContent;
+          document.getElementById('editAbout').value = (profileAbout.textContent.trim() === "No description added yet.") ? "" : profileAbout.textContent.trim();
+
+          toggleModal(editModal, true);
+        };
+      }
+
+      // Save Profile
+      saveProfileBtn.onclick = async () => {
+        const newName = document.getElementById('editName').value.trim();
+        const newPhone = document.getElementById('editPhone').value.trim();
+        const newLocation = document.getElementById('editLocation').value.trim();
+        const newEmail = document.getElementById('editEmail').value.trim();
+        const newAbout = document.getElementById('editAbout').value.trim();
+
+        if (!newName) return alert("Name is required.");
+
+        saveProfileBtn.textContent = "Saving...";
+        saveProfileBtn.disabled = true;
+
+        try {
+          // 1. Update Firestore
+          await updateDoc(doc(db, "users", user.uid), {
+            name: newName,
+            username: newName, // Keep both synced
+            phone: newPhone,
+            location: newLocation,
+            about: newAbout
+          });
+
+          // 2. Update Email if changed
+          if (newEmail !== user.email && newEmail) {
+            try {
+              await verifyBeforeUpdateEmail(user, newEmail);
+              alert(`✅ Verification email sent to ${newEmail}. Please verify to update your email.`);
+            } catch (emailErr) {
+              console.error("Email update error:", emailErr);
+              alert("Error updating email: " + emailErr.message);
+            }
+          }
+
+          // Update UI
+          profileName.textContent = newName;
+          profileEmail.textContent = user.email;
+
+          profilePhone.textContent = newPhone || "+91-XXXX-XXXXXX";
+          profileLocation.textContent = newLocation || "India";
+          profileAbout.textContent = newAbout || "No description added yet.";
+
+          alert("✅ Profile details updated successfully!");
+          toggleModal(editModal, false);
+
+        } catch (e) {
+          console.error("Error updating profile:", e);
+          alert("Failed to update profile.");
+        } finally {
+          saveProfileBtn.textContent = "Save Changes";
+          saveProfileBtn.disabled = false;
+        }
+      };
+
+      // Open Password Modal
+      openPwBtn.onclick = () => {
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+        toggleModal(pwModal, true);
+      };
+
+      // Save Password
+      savePasswordBtn.onclick = async () => {
+        const newPw = document.getElementById('newPassword').value;
+        const confirmPw = document.getElementById('confirmPassword').value;
+
+        if (newPw.length < 6) return alert("Password must be at least 6 characters.");
+        if (newPw !== confirmPw) return alert("Passwords do not match.");
+
+        savePasswordBtn.textContent = "Updating...";
+        savePasswordBtn.disabled = true;
+
+        try {
+          await updatePassword(user, newPw);
+          alert("✅ Password updated! Use new password next time.");
+          toggleModal(pwModal, false);
+        } catch (e) {
+          console.error("Error changing password:", e);
+          if (e.code === 'auth/requires-recent-login') {
+            alert("Security Check: Please sign out and sign in again to change your password.");
+          } else {
+            alert("Failed to update password: " + e.message);
+          }
+        } finally {
+          savePasswordBtn.textContent = "Update Password";
+          savePasswordBtn.disabled = false;
+        }
+      };
+
+    });
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      signOut(auth).then(() => {
+        window.location.href = "../index.html";
+      }).catch((error) => {
+        alert("Error signing out.");
+      });
+    });
+
+    lucide.createIcons();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+
+</html>

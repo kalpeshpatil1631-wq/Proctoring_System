@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Proctoring System</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #000000;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .hover-underline-animation:hover::after,
+        .hover-underline-animation.active-link::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-gray-100 w-full z-20 top-0 start-0 border-b border-gray-200 sticky">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="bg-black p-1.5 rounded-lg">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="self-center text-2xl font-bold whitespace-nowrap">Proctor</span>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <a href="login.html" type="button"
+                    class="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 text-center transition-colors">Get
+                    started</a>
+                <button data-collapse-toggle="navbar-sticky" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul
+                    class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                    <li>
+                        <a href="index.html"
+                            class="block py-2 px-3 text-gray-900 hover-underline-animation md:p-0">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html"
+                            class="block py-2 px-3 text-gray-900 hover-underline-animation md:p-0">About</a>
+                    </li>
+                    <li>
+                        <a href="contact.html"
+                            class="block py-2 px-3 text-black hover-underline-animation active-link md:p-0"
+                            aria-current="page">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl w-full bg-white shadow-xl rounded-2xl overflow-hidden flex flex-col lg:flex-row">
+
+            <!-- Left Column: Contact Info -->
+            <div class="w-full lg:w-5/12 bg-black text-white p-10 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-3xl font-extrabold mb-6">Get in Touch</h2>
+                    <p class="text-gray-400 text-lg mb-12">Have questions about our AI proctoring system? We're here to
+                        help you ensure secure and fair assessments.</p>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-gray-400 mt-1"></i>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Visit Us</h3>
+                                <p class="text-gray-400 mt-1">M. G. M. College of Engineering,<br>Nanded, Maharashtra
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="mail" class="w-6 h-6 text-gray-400 mt-1"></i>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Email Us</h3>
+                                <p class="text-gray-400 mt-1">support@proctor.ai</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="phone" class="w-6 h-6 text-gray-400 mt-1"></i>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Call Us</h3>
+                                <p class="text-gray-400 mt-1">(+91) 81 414 257 9980</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 lg:mt-0">
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Follow Us</h3>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook"
+                                class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitter"
+                                class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="instagram"
+                                class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin"
+                                class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Contact Form -->
+            <div class="w-full lg:w-7/12 p-10 lg:p-16 bg-white">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8">Send us a Message</h2>
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" name="name"
+                                class="block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-black focus:border-black transition-colors"
+                                placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email
+                                Address</label>
+                            <input type="email" id="email" name="email"
+                                class="block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-black focus:border-black transition-colors"
+                                placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone"
+                            class="block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-black focus:border-black transition-colors"
+                            placeholder="+91 000-0000">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4"
+                            class="block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-black focus:border-black transition-colors resize-none"
+                            placeholder="Active Proctoring features..." required></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" id="submitBtn"
+                            class="w-full flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-all">
+                            Send Message
+                        </button>
+                    </div>
+                    <div id="formStatus" class="mt-4 text-center text-sm font-medium hidden"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12 px-4 border-t border-gray-200">
+        <div class="max-w-screen-xl mx-auto">
+            <div class="flex flex-col lg:flex-row justify-between gap-12">
+                <!-- Brand -->
+                <div class="lg:w-1/3">
+                    <a href="index.html" class="flex items-center space-x-3 mb-6">
+                        <div class="bg-black p-1.5 rounded-lg">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="self-center text-2xl font-bold whitespace-nowrap text-gray-900">Proctor</span>
+                    </a>
+                    <p class="text-gray-500 text-sm">Ensuring integrity in online assessments through advanced AI
+                        technology.</p>
+                </div>
+
+                <!-- Links Grid -->
+                <div class="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:w-2/3 text-sm">
+                    <div>
+                        <h3 class="uppercase font-bold text-gray-900 mb-4 tracking-wider">Features</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><a href="#" class="hover:text-black transition-colors">Session Recording</a></li>
+                            <li><a href="#" class="hover:text-black transition-colors">Tab Switch</a></li>
+                            <li><a href="#" class="hover:text-black transition-colors">Face and Audio</a></li>
+                            <li><a href="#" class="hover:text-black transition-colors">Enhanced Proctoring</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="uppercase font-bold text-gray-900 mb-4 tracking-wider">Use Proctor</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><a href="#" class="hover:text-black transition-colors">Educational Exams</a></li>
+                            <li><a href="#" class="hover:text-black transition-colors">Internal Assessments</a></li>
+                            <li><a href="#" class="hover:text-black transition-colors">On Your Site</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="uppercase font-bold text-gray-900 mb-4 tracking-wider">Developers</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><a href="#" class="hover:text-black transition-colors">Public API</a></li>
+                            <li><a href="#" class="hover:text-black transition-colors">Documentation</a></li>
+                            <li><a href="#" class="hover:text-black transition-colors">Guides</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="uppercase font-bold text-gray-900 mb-4 tracking-wider">Social Media</h3>
+                        <div class="flex space-x-4 mt-2">
+                            <a href="#" class="text-gray-500 hover:text-black"><i data-lucide="facebook"
+                                    class="w-5 h-5"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-black"><i data-lucide="twitter"
+                                    class="w-5 h-5"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-black"><i data-lucide="instagram"
+                                    class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 mt-12 pt-8 text-center text-sm text-gray-500">
+                © 2025 Company Co. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script>
+        lucide.createIcons();
+
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const statusDiv = document.getElementById('formStatus');
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value
+            };
+
+            // UI Update
+            const originalText = btn.innerText;
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+            statusDiv.classList.add('hidden');
+            statusDiv.className = "mt-4 text-center text-sm font-medium hidden";
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                statusDiv.classList.remove('hidden');
+                if (response.ok) {
+                    statusDiv.innerText = "Message sent successfully! We'll get back to you soon.";
+                    statusDiv.classList.add('text-green-600');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    throw new Error(result.error || 'Failed to send message');
+                }
+            } catch (error) {
+                statusDiv.classList.remove('hidden');
+                statusDiv.innerText = "Error: " + error.message;
+                statusDiv.classList.add('text-red-600');
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+
+</html>

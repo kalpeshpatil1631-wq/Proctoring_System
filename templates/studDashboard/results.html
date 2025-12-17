@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results - Student</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Flowbite CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      /* gray-50 */
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+
+  <!-- Sidebar Toggle (Mobile) -->
+  <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+    type="button"
+    class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+    <span class="sr-only">Open sidebar</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path clip-rule="evenodd" fill-rule="evenodd"
+        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+      </path>
+    </svg>
+  </button>
+
+  <!-- Sidebar -->
+  <aside id="default-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+    aria-label="Sidebar">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-white border-r border-gray-200">
+      <a href="#" class="flex items-center ps-2.5 mb-8 mt-2">
+        <div class="bg-gray-900 text-white p-1.5 rounded-lg mr-3">
+          <i data-lucide="shield-check" class="w-6 h-6"></i>
+        </div>
+        <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900">Proctor</span>
+      </a>
+      <ul class="space-y-2 font-medium">
+        <li>
+          <a href="studentDashboard.html"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="layout-dashboard"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="exam-page.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="file-text"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">My Exams</span>
+          </a>
+        </li>
+        <li>
+          <a href="results.html" class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-100 group">
+            <i data-lucide="award" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Results</span>
+          </a>
+        </li>
+        <li>
+          <a href="violations.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="alert-triangle"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Violations</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="user" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Profile</span>
+          </a>
+        </li>
+
+        <li class="pt-4 mt-4 space-y-2 border-t border-gray-200">
+          <a href="#" id="logoutBtn"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group cursor-pointer">
+            <i data-lucide="log-out" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="p-4 sm:ml-64">
+    <div class="p-4 mt-10 sm:mt-0">
+
+      <!-- Header -->
+      <div class="mb-8">
+        <nav class="flex mb-4" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+              <a href="studentDashboard.html"
+                class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
+                <i data-lucide="home" class="w-4 h-4 me-2"></i>
+                Home
+              </a>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 mx-1"></i>
+                <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2">Results</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="text-3xl font-bold text-gray-900">My Results</h1>
+            <p class="text-gray-500 mt-1">Check your performance and scores across exams.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Table Card -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-green-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">#</th>
+                <th scope="col" class="px-6 py-3">Exam Title</th>
+                <th scope="col" class="px-6 py-3">Exam Date</th>
+                <th scope="col" class="px-6 py-3 text-center">Score</th>
+                <th scope="col" class="px-6 py-3 text-right">Submitted At</th>
+              </tr>
+            </thead>
+            <tbody id="resultTableBody">
+              <!-- Loading State -->
+              <tr>
+                <td colspan="5" class="px-6 py-8 text-center text-gray-500">
+                  <div class="flex justify-center items-center">
+                    <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900 mr-2"></div>
+                    Fetching your results...
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Firebase Logic -->
+  <script type="module">
+    import { app, auth, db } from '/static/js/firebase-config.js';
+    import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+    import { collection, getDocs, doc, getDoc, query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+    const resultTableBody = document.getElementById("resultTableBody");
+
+    // Auth Check
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = "../index.html";
+      } else {
+        loadResults(user);
+      }
+    });
+
+    async function loadResults(user) {
+      resultTableBody.innerHTML = "";
+      let i = 1;
+      const email = user.email;
+
+      try {
+        // Get all exams
+        const examsSnapshot = await getDocs(collection(db, "exams"));
+
+        // Iterate through exams to find submissions for this user
+        // (Note: Optimized query would be collection group query, but keeping logic same as original for safety unless index exists)
+
+        // Collect all submissions first
+        let allResults = [];
+
+        for (const examDoc of examsSnapshot.docs) {
+          const examId = examDoc.id;
+          const examData = examDoc.data();
+
+          const submissionsQuery = query(
+            collection(db, "exams", examId, "submissions"),
+            where("studentEmail", "==", email)
+          );
+          const submissionsSnapshot = await getDocs(submissionsQuery);
+
+          for (const subDoc of submissionsSnapshot.docs) {
+            const subData = subDoc.data();
+            allResults.push({
+              examId: examId,
+              examTitle: examData.testName || examData.title || examId,
+              examData: examData,
+              ...subData
+            });
+          }
+        }
+
+        // Sort by submittedAt descending (Newest first)
+        allResults.sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+
+        for (const res of allResults) {
+          const score = res.score !== undefined ? res.score : (res.totalScore !== undefined ? res.totalScore : "-");
+
+          let submittedAtFormatted = "-";
+          if (res.submittedAt) {
+            const dateObj = new Date(res.submittedAt);
+            const datePart = dateObj.toLocaleDateString('en-GB');
+            const timePart = dateObj.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+            submittedAtFormatted = `${datePart} & ${timePart}`;
+          }
+
+          let examDateFormatted = "-";
+          // Use exam createdAt or startDateTime if available, otherwise -
+          if (res.examData.startDateTime) {
+            const dateObj = new Date(res.examData.startDateTime);
+            const datePart = dateObj.toLocaleDateString('en-GB');
+            const timePart = dateObj.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+            examDateFormatted = `${datePart} & ${timePart}`;
+          }
+
+          // Create Row
+          const row = document.createElement("tr");
+          row.className = "bg-white border-b hover:bg-gray-50";
+          row.innerHTML = `
+                              <td class="px-6 py-4 font-medium text-gray-900">
+                                ${i++}
+                            </td>
+                            <td class="px-6 py-4 font-medium text-gray-900">
+                                ${res.examTitle}
+                            </td>
+                            <td class="px-6 py-4">
+                                ${examDateFormatted}
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded border border-green-400">
+                                    ${score}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                ${submittedAtFormatted}
+                            </td>
+                        `;
+          resultTableBody.appendChild(row);
+        }
+
+        if (i === 1) {
+          resultTableBody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-gray-500">No exam results found.</td></tr>';
+        }
+
+      } catch (error) {
+        console.error("Error loading results:", error);
+        resultTableBody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-red-500">Error loading results.</td></tr>';
+      }
+    }
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      signOut(auth).then(() => {
+        window.location.href = "../index.html";
+      }).catch((error) => {
+        alert("Error signing out.");
+      });
+    });
+
+    lucide.createIcons();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+
+</html>

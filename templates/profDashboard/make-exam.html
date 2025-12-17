@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Exam - Professor</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Flowbite CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      /* gray-50 */
+    }
+
+    .option-selected {
+      @apply ring-2 ring-blue-500 bg-blue-50 border-blue-500;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+
+  <!-- Sidebar Toggle (Mobile) -->
+  <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+    type="button"
+    class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+    <span class="sr-only">Open sidebar</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path clip-rule="evenodd" fill-rule="evenodd"
+        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+      </path>
+    </svg>
+  </button>
+
+  <!-- Sidebar -->
+  <aside id="default-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+    aria-label="Sidebar">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-white border-r border-gray-200">
+      <a href="#" class="flex items-center ps-2.5 mb-8 mt-2">
+        <div class="bg-gray-900 text-white p-1.5 rounded-lg mr-3">
+          <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+        </div>
+        <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900">Proctor</span>
+      </a>
+      <ul class="space-y-2 font-medium">
+        <li>
+          <a href="professorDashboard.html"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="layout-dashboard"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="make-exam.html" class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-100 group">
+            <i data-lucide="plus-circle"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Create Exam</span>
+          </a>
+        </li>
+        <li>
+          <a href="manage-exams.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="file-text"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">My Exams</span>
+          </a>
+        </li>
+        <li>
+          <a href="admin-panel.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="settings"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Admin Panel</span>
+          </a>
+        </li>
+
+        <li class="pt-4 mt-4 space-y-2 border-t border-gray-200">
+          <a href="profile.html" class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-100 group">
+            <i data-lucide="user" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Profile</span>
+          </a>
+          <a href="#" id="logoutBtn"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group cursor-pointer">
+            <i data-lucide="log-out" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="p-4 sm:ml-64">
+    <div class="p-4 mt-10 sm:mt-0">
+
+      <!-- Header -->
+      <div class="mb-8">
+        <nav class="flex mb-4" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+              <a href="professorDashboard.html"
+                class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
+                <i data-lucide="home" class="w-4 h-4 me-2"></i>
+                Home
+              </a>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 mx-1"></i>
+                <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2">Create Exam</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="text-3xl font-bold text-gray-900">Create New Exam</h1>
+            <p class="text-gray-500 mt-1">Set up exam details and add questions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exam Form -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+        <h2 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+          <i data-lucide="file-signature" class="w-5 h-5 mr-2 text-blue-600"></i> Exam Details
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="col-span-1 md:col-span-2">
+            <label for="testName" class="block mb-2 text-sm font-medium text-gray-900">Exam Title</label>
+            <input type="text" id="testName"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="e.g. Mid-Term Physics 2024" required>
+          </div>
+
+          <div>
+            <label for="startDateTime" class="block mb-2 text-sm font-medium text-gray-900">Start Date & Time</label>
+            <input type="datetime-local" id="startDateTime"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              required>
+          </div>
+          <div>
+            <label for="endDateTime" class="block mb-2 text-sm font-medium text-gray-900">End Date & Time</label>
+            <input type="datetime-local" id="endDateTime"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              required>
+          </div>
+
+          <div>
+            <label for="testDuration" class="block mb-2 text-sm font-medium text-gray-900">Duration (Minutes)</label>
+            <input type="number" id="testDuration" min="1"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="e.g. 60" required>
+          </div>
+
+          <div class="col-span-1 md:col-span-2">
+            <label for="testDescription" class="block mb-2 text-sm font-medium text-gray-900">Description /
+              Instructions</label>
+            <textarea id="testDescription" rows="3"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Enter instructions for the students..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Questions Section -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-lg font-bold text-gray-900 flex items-center">
+            <i data-lucide="list-checks" class="w-5 h-5 mr-2 text-blue-600"></i> Questions
+          </h2>
+          <button type="button" id="openModalBtn"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center">
+            <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Add Question
+          </button>
+        </div>
+
+        <div class="relative overflow-x-auto rounded-lg border border-gray-200">
+          <table class="w-full text-sm text-left text-gray-500" id="questionTable">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">#</th>
+                <th scope="col" class="px-6 py-3 w-1/2">Question Text</th>
+                <th scope="col" class="px-6 py-3 text-center">Marks</th>
+                <th scope="col" class="px-6 py-3 text-center">Negative</th>
+                <th scope="col" class="px-6 py-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="questionTableBody">
+              <!-- Questions will appear here -->
+              <!-- Empty State -->
+              <tr id="emptyStateRow">
+                <td colspan="5" class="px-6 py-8 text-center text-gray-400 italic">
+                  No questions added yet. Click "Add Question" to start.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center justify-between mt-4">
+          <p class="text-sm text-gray-500">Total Questions: <span id="questionCount"
+              class="font-bold text-gray-900">0</span></p>
+
+          <button id="saveExamBtn"
+            class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-6 py-3 flex items-center">
+            <i data-lucide="save" class="w-4 h-4 mr-2"></i> Save & Publish Exam
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Question Modal -->
+  <div id="questionModal" tabindex="-1" aria-hidden="true"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="relative w-full max-w-2xl max-h-full">
+      <!-- Modal Content -->
+      <div class="relative bg-white rounded-lg shadow">
+        <div class="flex items-start justify-between p-4 border-b rounded-t">
+          <h3 class="text-xl font-semibold text-gray-900">Add New Question</h3>
+          <button type="button" id="closeModalBtn"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <div class="p-6 space-y-6">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="col-span-2">
+              <label class="block mb-2 text-sm font-medium text-gray-900">Question Text</label>
+              <textarea id="qText" rows="2"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Type your question here..."></textarea>
+            </div>
+
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900">Marks</label>
+              <input type="number" id="qMarks" min="1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="1">
+            </div>
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900">Question Type</label>
+              <select id="qType"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <option value="mcq_single">Single Correct (MCQ)</option>
+                <option value="mcq_multiple">Multi Correct (MSQ)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex items-center mb-4">
+            <input id="qNegative" type="checkbox" value=""
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+            <label for="qNegative" class="ms-2 text-sm font-medium text-gray-900">Enable Negative Marking?</label>
+          </div>
+
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Options <span
+                class="text-xs text-gray-500 font-normal">(Click option to mark as correct)</span></label>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <input type="text" id="qOpt1" data-index="1"
+                class="optionInput bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 cursor-pointer hover:bg-gray-100 transition"
+                placeholder="Option 1">
+              <input type="text" id="qOpt2" data-index="2"
+                class="optionInput bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 cursor-pointer hover:bg-gray-100 transition"
+                placeholder="Option 2">
+              <input type="text" id="qOpt3" data-index="3"
+                class="optionInput bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 cursor-pointer hover:bg-gray-100 transition"
+                placeholder="Option 3">
+              <input type="text" id="qOpt4" data-index="4"
+                class="optionInput bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 cursor-pointer hover:bg-gray-100 transition"
+                placeholder="Option 4">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b">
+          <button id="saveQuestionBtn" type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add
+            to Exam</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Firebase Logic -->
+  <script type="module">
+    import { app, auth, db } from '/static/js/firebase-config.js';
+    import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+    // State
+    const questions = [];
+    const questionTableBody = document.getElementById('questionTableBody');
+    const emptyStateRow = document.getElementById('emptyStateRow');
+    const questionCountSpan = document.getElementById('questionCount');
+
+    // Utils
+    const updateQuestionList = () => {
+      if (questions.length === 0) {
+        emptyStateRow.style.display = 'table-row';
+      } else {
+        emptyStateRow.style.display = 'none';
+      }
+
+      // Re-render rows (simple approach) or append. 
+      // Clearing non-empty rows for simplicity in this implementation
+      Array.from(questionTableBody.children).forEach(child => {
+        if (child.id !== 'emptyStateRow') child.remove();
+      });
+
+      questions.forEach((q, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = "bg-white border-b hover:bg-gray-50";
+        tr.innerHTML = `
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">${idx + 1}</th>
+                    <td class="px-6 py-4 font-medium">${q.questionText}</td>
+                    <td class="px-6 py-4 text-center">${q.marks}</td>
+                    <td class="px-6 py-4 text-center">${q.negativeMarking ? '<span class="text-red-500 font-bold">Yes</span>' : 'No'}</td>
+                    <td class="px-6 py-4 text-right">
+                         <button data-index="${idx}" class="font-medium text-red-600 hover:underline delete-btn">Remove</button>
+                    </td>
+                `;
+        questionTableBody.appendChild(tr);
+      });
+
+      // Update listeners for delete
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(e.target.dataset.index);
+          questions.splice(idx, 1);
+          updateQuestionList();
+        });
+      });
+
+      questionCountSpan.textContent = questions.length;
+    };
+
+
+    // Auth
+    onAuthStateChanged(auth, (user) => {
+      if (!user) window.location.href = "../../index.html";
+    });
+
+    // Modal Logic
+    const modal = document.getElementById('questionModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const optionInputs = document.querySelectorAll('.optionInput');
+
+    const toggleModal = (show) => {
+      if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    };
+
+    openModalBtn.addEventListener('click', () => {
+      // Reset fields
+      document.getElementById('qText').value = '';
+      document.getElementById('qMarks').value = '';
+      document.getElementById('qNegative').checked = false;
+      optionInputs.forEach(i => {
+        i.value = '';
+        i.classList.remove('option-selected');
+        i.classList.remove('bg-blue-50', 'ring-2', 'ring-blue-500', 'border-blue-500'); // Clean Tailwind classes
+        i.classList.add('bg-gray-50', 'border-gray-300'); // Reset to default
+      });
+      toggleModal(true);
+    });
+
+    closeModalBtn.addEventListener('click', () => toggleModal(false));
+
+    // Option Selection Logic
+    optionInputs.forEach(input => {
+      input.addEventListener('click', () => {
+        const type = document.getElementById('qType').value;
+        if (type === 'mcq_single') {
+          optionInputs.forEach(i => {
+            i.classList.remove('option-selected', 'bg-blue-50', 'ring-2', 'ring-blue-500', 'border-blue-500');
+            i.classList.add('bg-gray-50', 'border-gray-300');
+          });
+        }
+
+        // Toggle current
+        if (input.classList.contains('option-selected')) {
+          input.classList.remove('option-selected', 'bg-blue-50', 'ring-2', 'ring-blue-500', 'border-blue-500');
+          input.classList.add('bg-gray-50', 'border-gray-300');
+        } else {
+          input.classList.add('option-selected', 'bg-blue-50', 'ring-2', 'ring-blue-500', 'border-blue-500');
+          input.classList.remove('bg-gray-50', 'border-gray-300');
+        }
+      });
+    });
+
+    // Add Question Logic
+    document.getElementById('saveQuestionBtn').addEventListener('click', () => {
+      const qText = document.getElementById('qText').value.trim();
+      const qMarks = parseFloat(document.getElementById('qMarks').value);
+      const qNegative = document.getElementById('qNegative').checked;
+      const type = document.getElementById('qType').value;
+
+      // Collect options
+      const optionsArr = [];
+      const correctIndices = [];
+
+      optionInputs.forEach(input => {
+        optionsArr.push(input.value.trim()); // index 1 is at array index 0
+        if (input.classList.contains('option-selected')) {
+          correctIndices.push(parseInt(input.dataset.index));
+        }
+      });
+
+      if (!qText || isNaN(qMarks) || qMarks <= 0 || optionsArr.some(o => !o) || correctIndices.length === 0) {
+        alert('❌ Please fill out all fields and select at least one correct answer.');
+        return;
+      }
+
+      questions.push({
+        questionText: qText,
+        marks: qMarks,
+        negativeMarking: qNegative,
+        options: optionsArr,
+        correct: correctIndices,
+        type: type
+      });
+
+      updateQuestionList();
+      toggleModal(false);
+    });
+
+    // Save Exam Logic
+    document.getElementById('saveExamBtn').addEventListener('click', async () => {
+      const user = auth.currentUser;
+      if (!user) return alert("Not authenticated.");
+
+      const saveBtn = document.getElementById('saveExamBtn');
+
+      const testName = document.getElementById('testName').value.trim();
+      const startDateTime = document.getElementById('startDateTime').value;
+      const endDateTime = document.getElementById('endDateTime').value;
+      const duration = parseInt(document.getElementById('testDuration').value);
+      const description = document.getElementById('testDescription').value.trim();
+
+      if (!testName || !startDateTime || !endDateTime || !duration || questions.length === 0) {
+        alert('⚠️ Please fill in all exam details and add at least one question.');
+        return;
+      }
+
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 mr-2 animate-spin"></i> Saving...';
+      lucide.createIcons();
+
+      try {
+        await addDoc(collection(db, "exams"), {
+          testName,
+          duration,
+          startDateTime,
+          endDateTime,
+          description,
+          questions,
+          createdBy: user.uid,
+          createdAt: serverTimestamp()
+        });
+        alert("✅ Exam created successfully!");
+        window.location.reload();
+      } catch (error) {
+        console.error("Save error:", error);
+        alert("❌ Failed to save exam.");
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = '<i data-lucide="save" class="w-4 h-4 mr-2"></i> Save & Publish Exam';
+        lucide.createIcons();
+      }
+    });
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      signOut(auth).then(() => {
+        window.location.href = "../../index.html";
+      }).catch((error) => {
+        alert("Error signing out.");
+      });
+    });
+
+    lucide.createIcons();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+
+
+</html>

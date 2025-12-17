@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Violations - Student</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Flowbite CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      /* gray-50 */
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+
+  <!-- Sidebar Toggle (Mobile) -->
+  <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+    type="button"
+    class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+    <span class="sr-only">Open sidebar</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path clip-rule="evenodd" fill-rule="evenodd"
+        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+      </path>
+    </svg>
+  </button>
+
+  <!-- Sidebar -->
+  <aside id="default-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+    aria-label="Sidebar">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-white border-r border-gray-200">
+      <a href="#" class="flex items-center ps-2.5 mb-8 mt-2">
+        <div class="bg-gray-900 text-white p-1.5 rounded-lg mr-3">
+          <i data-lucide="shield-check" class="w-6 h-6"></i>
+        </div>
+        <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900">Proctor</span>
+      </a>
+      <ul class="space-y-2 font-medium">
+        <li>
+          <a href="studentDashboard.html"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="layout-dashboard"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="exam-page.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="file-text"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">My Exams</span>
+          </a>
+        </li>
+        <li>
+          <a href="results.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="award" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Results</span>
+          </a>
+        </li>
+        <li>
+          <a href="violations.html" class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-100 group">
+            <i data-lucide="alert-triangle"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Violations</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <i data-lucide="user" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Profile</span>
+          </a>
+        </li>
+
+        <li class="pt-4 mt-4 space-y-2 border-t border-gray-200">
+          <a href="#" id="logoutBtn"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group cursor-pointer">
+            <i data-lucide="log-out" class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+            <span class="ms-3">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="p-4 sm:ml-64">
+    <div class="p-4 mt-10 sm:mt-0">
+
+      <!-- Header -->
+      <div class="mb-8">
+        <nav class="flex mb-4" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+              <a href="studentDashboard.html"
+                class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
+                <i data-lucide="home" class="w-4 h-4 me-2"></i>
+                Home
+              </a>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 mx-1"></i>
+                <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2">Violations</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+          <div>
+            <h1 class="text-3xl font-bold text-gray-900">Violations</h1>
+            <p class="text-gray-500 mt-1">Review flagged incidents during your exams.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Section -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+          <label for="examSelect" class="text-sm font-medium text-gray-700 whitespace-nowrap">Select Exam:</label>
+          <select id="examSelect"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-64 p-2.5">
+            <option value="">Loading exams...</option>
+          </select>
+          <button id="showViolationsBtn"
+            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 w-full md:w-auto">
+            Show Violations
+          </button>
+        </div>
+      </div>
+
+      <!-- Violations Table Card -->
+      <div id="violationSection" class="hidden">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-500">
+              <thead class="text-xs text-gray-700 uppercase bg-red-50 text-red-700">
+                <tr>
+                  <th scope="col" class="px-6 py-3">#</th>
+                  <th scope="col" class="px-6 py-3">Violation Type</th>
+                  <th scope="col" class="px-6 py-3">Timestamp</th>
+                  <th scope="col" class="px-6 py-3">Description</th>
+                  <th scope="col" class="px-6 py-3">Action</th>
+                </tr>
+              </thead>
+              <tbody id="studentViolationTableBody">
+                <!-- Data populated here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Firebase Logic -->
+  <script type="module">
+    import { app, auth, db } from '/static/js/firebase-config.js';
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+    import { collection, getDocs, getDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+    let currentStudentEmail = "";
+
+    // Auth Check
+    onAuthStateChanged(auth, (user) => {
+      if (!user) return window.location.href = "../index.html";
+      currentStudentEmail = user.email;
+      loadExamList(currentStudentEmail);
+    });
+
+    // Load Exams into Dropdown
+    async function loadExamList(email) {
+      const examSelect = document.getElementById("examSelect");
+
+      try {
+        const examSnap = await getDocs(collection(db, "exams"));
+        examSelect.innerHTML = `<option value="">-- Choose an Exam --</option>`;
+
+        for (const examDoc of examSnap.docs) {
+          const examId = examDoc.id;
+
+          // Optimization: In a real app, you'd query "submissions" or a "user_exams" collection 
+          // instead of iterating all exams and checking violations for participation.
+          // Sticking to original logic for compatibility:
+
+          const violationsSnap = await getDocs(collection(db, `exams/${examId}/violations`));
+          let participated = false;
+
+          // This is inefficient but mimics original 'participated' check based on existence of violations?
+          // Original code: checked if student had ANY violation to list the exam. 
+          // Probably better to check submissions, but let's stick to the request of "redesign" not "refactor logic entirely".
+
+          // Actually, let's make it slightly smarter: check if user has a submission OR violations.
+          // For now, mirroring original logic: check if user email is in violations.
+          violationsSnap.forEach(doc => {
+            const v = doc.data();
+            if (v.studentEmail === email) participated = true;
+          });
+
+          if (participated) {
+            const data = examDoc.data();
+            const opt = document.createElement("option");
+            opt.value = examId;
+            opt.textContent = data.testName || examId;
+            examSelect.appendChild(opt);
+          }
+        }
+      } catch (e) {
+        console.error("Error loading exams:", e);
+        examSelect.innerHTML = `<option value="">Error loading exams</option>`;
+      }
+    }
+
+    // Show Violations
+    document.getElementById("showViolationsBtn").addEventListener("click", () => {
+      const selectedId = document.getElementById("examSelect").value;
+      if (!selectedId) {
+        alert("Please select an exam first.");
+        return;
+      }
+      loadViolationsByExam(currentStudentEmail, selectedId);
+    });
+
+    async function loadViolationsByExam(email, examId) {
+      const tableBody = document.getElementById("studentViolationTableBody");
+      const tableSection = document.getElementById("violationSection");
+
+      tableBody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center"><div class="animate-pulse">Loading violations...</div></td></tr>';
+      tableSection.classList.remove("hidden");
+
+      try {
+        const violationsSnap = await getDocs(collection(db, `exams/${examId}/violations`));
+        const studentViolations = [];
+
+        violationsSnap.forEach(doc => {
+          const v = doc.data();
+          if (v.studentEmail === email) studentViolations.push(v);
+        });
+
+        if (studentViolations.length === 0) {
+          tableBody.innerHTML = `<tr><td colspan="5" class="px-6 py-8 text-center text-green-600 font-medium">✅ No violations recorded for this exam. Great job!</td></tr>`;
+          return;
+        }
+
+        tableBody.innerHTML = ""; // Clear loading
+        let count = 1;
+        const typeCounts = {};
+
+        studentViolations.forEach(v => {
+          const type = v.event || v.type || "UNKNOWN";
+          const ts = v.detectedAt?.toDate?.() || new Date(v.timestamp || Date.now());
+          typeCounts[type] = (typeCounts[type] || 0) + 1;
+
+          const row = document.createElement("tr");
+          row.className = "bg-white border-b hover:bg-gray-50";
+          row.innerHTML = `
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            ${count++}
+                        </th>
+                        <td class="px-6 py-4 font-medium text-red-600">
+                            ${type}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${ts.toLocaleString()}
+                        </td>
+                        <td class="px-6 py-4">
+                            Exam Status: Terminated
+                        </td>
+                        <td class="px-6 py-4">
+                            -
+                        </td>
+                    `;
+          tableBody.appendChild(row);
+        });
+
+        // Summary Row
+        const summary = Object.entries(typeCounts).map(([k, v]) => `${v} ${k}`).join(', ');
+        const summaryRow = document.createElement("tr");
+        summaryRow.className = "bg-red-50 font-semibold text-gray-900";
+        summaryRow.innerHTML = `
+                    <td colspan="4" class="px-6 py-4 text-right">Total Violations:</td>
+                    <td class="px-6 py-4 text-red-600">${studentViolations.length} (${summary})</td>
+                `;
+        tableBody.appendChild(summaryRow);
+
+      } catch (error) {
+        console.error("Error fetching violations:", error);
+        tableBody.innerHTML = `<tr><td colspan="5" class="px-6 py-8 text-center text-red-500">Error loading data.</td></tr>`;
+      }
+    }
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      signOut(auth).then(() => {
+        window.location.href = "../index.html";
+      }).catch((error) => {
+        alert("Error signing out.");
+      });
+    });
+
+    lucide.createIcons();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+
+</html>
