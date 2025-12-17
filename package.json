@@ -1,30 +1,43 @@
 {
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "firebase-admin": "^13.6.0"
-  },
-  "devDependencies": {
-    "dotenv": "^16.0.0",
-    "nodemon": "^3.1.10"
-  },
-  "scripts": {
-    "start": "node app.js"
-  },
-  "name": "proctor",
-  "description": "��#\u0000 \u0000p\u0000r\u0000o\u0000c\u0000t\u00001\u0000\r\u0000 \u0000",
-  "version": "1.0.0",
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sakshi443/proctor.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Sakshi443/proctor/issues"
-  },
-  "homepage": "https://github.com/Sakshi443/proctor#readme"
+    "name" : "concat-map",
+    "description" : "concatenative mapdashery",
+    "version" : "0.0.1",
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/substack/node-concat-map.git"
+    },
+    "main" : "index.js",
+    "keywords" : [
+        "concat",
+        "concatMap",
+        "map",
+        "functional",
+        "higher-order"
+    ],
+    "directories" : {
+        "example" : "example",
+        "test" : "test"
+    },
+    "scripts" : {
+        "test" : "tape test/*.js"
+    },
+    "devDependencies" : {
+        "tape" : "~2.4.0"
+    },
+    "license" : "MIT",
+    "author" : {
+        "name" : "James Halliday",
+        "email" : "mail@substack.net",
+        "url" : "http://substack.net"
+    },
+    "testling" : {
+        "files" : "test/*.js",
+        "browsers" : {
+            "ie" : [ 6, 7, 8, 9 ],
+            "ff" : [ 3.5, 10, 15.0 ],
+            "chrome" : [ 10, 22 ],
+            "safari" : [ 5.1 ],
+            "opera" : [ 12 ]
+        }
+    }
 }
